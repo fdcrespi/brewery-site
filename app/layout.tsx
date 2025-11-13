@@ -39,9 +39,17 @@ const trashHandFont = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'ELENA X - Cerveza artesanal - Sierra de la Ventana',
+  description: 'La cerveza artesanal de Sierra de la Ventana',
+  generator: 'bitia',
+  applicationName: 'ELENA X',
+  icons: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      url: '/images/logo.png',
+    },
+  ],
 }
 
 export default function RootLayout({

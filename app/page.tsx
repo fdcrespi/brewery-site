@@ -142,6 +142,11 @@ export default function Home() {
             priority
             className="drop-shadow-[0_25px_35px_rgba(255,255,255,0.35)] select-none transition-opacity duration-500"
           />
+          <div 
+            className="relative w-[500px] -translate-y-[186%] rotate-[18deg] -translate-x-[-99%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/50 before:via-transparent before:to-black/50 before:pointer-events-none"
+          >
+            <img src="/etiquetas/1.jpg" className="rounded-lg w-full h-[100%]" />
+          </div>
         </motion.div>
 
         {/* Contenido de cada cerveza */}
@@ -283,14 +288,14 @@ export default function Home() {
               <Button style={{ backgroundColor: brand.green, color: "#000" }} className="hover:opacity-90">Enviar</Button>
             </form>
           </div> */}
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1319.38275171752!2d-61.79423024165686!3d-38.139292829924344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzjCsDA4JzIxLjUiUyA2McKwNDcnMzguOCJX!5e0!3m2!1ses-419!2sar!4v1763049289555!5m2!1ses-419!2sar" 
-            width="100%" 
-            height="450" 
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1319.38275171752!2d-61.79423024165686!3d-38.139292829924344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzjCsDA4JzIxLjUiUyA2McKwNDcnMzguOCJX!5e0!3m2!1ses-419!2sar!4v1763049289555!5m2!1ses-419!2sar"
+            width="100%"
+            height="450"
             style={{ border: "0" }}
-            allowFullScreen={true} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade" 
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
 
           <div className="justify-self-center w-full ">

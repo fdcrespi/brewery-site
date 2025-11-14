@@ -7,7 +7,7 @@ import Link from "next/link"
 
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 export default function Home() {
   const sectionRef = useRef(null);
@@ -68,9 +68,11 @@ export default function Home() {
       abv: "4.8%",
       ibu: "18",
       gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/etiquetas/black.jpg",
+      image: "/etiquetas/black.png",
     },
   ]
+
+  const [currentBeerIndex, setCurrentBeerIndex] = useState(0)
 
   return (
     <main ref={containerRef} className="h-screen overflow-y-scroll snap-y snap-mandatory bg-[#000000] text-white">
@@ -145,19 +147,21 @@ export default function Home() {
           />
           <motion.div 
             style={{ opacity: labelOpacity }}
-            className="relative w-[130px] -translate-y-[186%] rotate-[18deg] -translate-x-[-99%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/50 before:via-transparent before:to-black/50 before:pointer-events-none"
+            className="relative -translate-y-[186%] rotate-[18deg] -translate-x-[-99%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/50 before:via-transparent before:to-black/50 before:pointer-events-none"
           >
-            <img src="/etiquetas/1.jpg" className="rounded-lg w-full h-[100%]" />
+            <img src={beers[currentBeerIndex].image} className="rounded-lg w-full h-[100%]" />
           </motion.div>
         </motion.div>
 
         {/* Contenido de cada cerveza */}
         <div className="space-y-[100vh] relative z-10">
           {beers.map((beer, i) => (
-            <section
-              key={beer.id}
-              className="snap-start min-h-screen flex items-center relative overflow-hidden"
-            >
+             <motion.section
+               key={beer.id}
+               className="snap-start min-h-screen flex items-center relative overflow-hidden"
+               viewport={{ amount: 0.6 }}
+               onViewportEnter={() => setCurrentBeerIndex(i)}
+             >
               <div className={`absolute inset-0 -z-10 bg-gradient-to-br opacity-25 ${beer.gradient}`} />
 
               <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
@@ -239,7 +243,8 @@ export default function Home() {
               <div className="absolute right-6 bottom-8 text-6xl font-black text-white/10 select-none">
                 {String(i + 1).padStart(2, "0")}
               </div>
-            </section>
+              </motion.section>
+           
           ))}
         </div>
       </div>
@@ -279,7 +284,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-br opacity-25" style={{
           backgroundImage: `linear-gradient(135deg, ${brand.dark}, ${brand.black})`,
         }} />
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start flex items-center">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 items-start flex items-center">
           {/* <div>
             <h3 className="text-4xl md:text-5xl font-extrabold mb-4">Contacto</h3>
             <p className="text-white/80 mb-6 max-w-xl">Escríbenos para distribuciones, eventos o colaboraciones.</p>
@@ -298,10 +303,11 @@ export default function Home() {
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            className="rounded-lg shadow-xl drop-shadow-[0_2px_5px_rgba(255,255,255,0.45)]"
           />
 
           <div className="justify-self-center w-full ">
-            <Card className="bg-[#ffffff]/40 border-0 shadow-xl drop-shadow-[0_25px_35px_rgba(255,255,255,0.45)] text-2xl">
+            <Card className="bg-[#ffffff]/40 border-0 shadow-xl drop-shadow-[0_2px_5px_rgba(255,255,255,0.45)] text-2xl">
               <CardContent className="p-8 text-white/80 flex flex-col gap-2 lg:gap-4">
                 <Link href="tel:+5492914262404">
                   <Smartphone className="inline-block w-6 h-6 mr-2" />

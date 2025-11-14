@@ -21,6 +21,7 @@ export default function Home() {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 25]); // gira 25° durante el scroll
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]); // movimiento sutil vertical
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]); // leve aumento visual
+  const labelOpacity = useTransform(scrollYProgress, [0, 0.18, 0.9, 1], [0, 1, 1, 0]); // etiqueta aparece tras la botella
   // Detectar si la sección de cervezas está visible
   const inView = useInView(sectionRef, { amount: 0.3 });
 
@@ -45,7 +46,7 @@ export default function Home() {
       abv: "6.0%",
       ibu: "55",
       gradient: `from-[${brand.dark}] to-[${brand.black}]`,
-      image: "/images/maquetai2.png",
+      image: "/etiquetas/red.png",
     },
     {
       id: "porter",
@@ -56,7 +57,7 @@ export default function Home() {
       abv: "5.6%",
       ibu: "35",
       gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/images/diabolicus-bottle.png",
+      image: "/etiquetas/green.png",
     },
     {
       id: "lager",
@@ -67,7 +68,7 @@ export default function Home() {
       abv: "4.8%",
       ibu: "18",
       gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/etiquetas/2.jpg",
+      image: "/etiquetas/black.jpg",
     },
   ]
 
@@ -142,11 +143,12 @@ export default function Home() {
             priority
             className="drop-shadow-[0_25px_35px_rgba(255,255,255,0.35)] select-none transition-opacity duration-500"
           />
-          <div 
-            className="relative w-[500px] -translate-y-[186%] rotate-[18deg] -translate-x-[-99%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/50 before:via-transparent before:to-black/50 before:pointer-events-none"
+          <motion.div 
+            style={{ opacity: labelOpacity }}
+            className="relative w-[130px] -translate-y-[186%] rotate-[18deg] -translate-x-[-99%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/50 before:via-transparent before:to-black/50 before:pointer-events-none"
           >
             <img src="/etiquetas/1.jpg" className="rounded-lg w-full h-[100%]" />
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Contenido de cada cerveza */}

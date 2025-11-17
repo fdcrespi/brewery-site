@@ -21,7 +21,7 @@ export default function Home() {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 25]); // gira 25° durante el scroll
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]); // movimiento sutil vertical
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]); // leve aumento visual
-  const labelOpacity = useTransform(scrollYProgress, [0, 0.18, 0.9, 1], [0, 1, 1, 0]); // etiqueta aparece tras la botella
+  const labelOpacity = useTransform(scrollYProgress, [0, 0, 0.9, 1], [0, 1, 1, 0]); // etiqueta aparece tras la botella
   // Detectar si la sección de cervezas está visible
   const inView = useInView(sectionRef, { amount: 0.3 });
 
@@ -39,36 +39,36 @@ export default function Home() {
   const beers = [
     {
       id: "ipa",
-      name: "IPA",
-      style: "India Pale Ale",
+      name: "Session IPA",
+      style: "IPA",
       description:
         "Aromática y lupulada, con notas cítricas y frutales. Amargor firme y final seco que invita a otro sorbo.",
       abv: "6.0%",
       ibu: "55",
       gradient: `from-[${brand.dark}] to-[${brand.black}]`,
-      image: "/etiquetas/red.png",
+      image: "/etiquetas/session_ipa.png",
     },
     {
-      id: "porter",
-      name: "Porter",
-      style: "Robust Porter",
+      id: "golden",
+      name: "Golden",
+      style: "Golden Ale",
       description:
         "Tostada y sedosa. Chocolate negro, café y un toque de caramelo. Cuerpo medio y final largo.",
       abv: "5.6%",
       ibu: "35",
       gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/etiquetas/green.png",
+      image: "/etiquetas/golden.png",
     },
     {
-      id: "lager",
-      name: "Lager",
-      style: "Helles Lager",
+      id: "scottish",
+      name: "Scottish",
+      style: "Scottish Ale",
       description:
         "Refrescante y equilibrada. Malta suave, amargor moderado y una carbonatación crujiente para todos los momentos.",
       abv: "4.8%",
       ibu: "18",
       gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/etiquetas/black.png",
+      image: "/etiquetas/scottish.png",
     },
   ]
 
@@ -135,7 +135,7 @@ export default function Home() {
         <motion.div
           style={{ rotate, y, scale, opacity }}
 
-          className="fixed left-4 sm:left-8 md:left-16 lg:left-24 top-1/4 -translate-y-1/2 pointer-events-none -z-10 lg:z-[40]"
+          className="fixed ml-[-50px] p-0 sm:left-8 md:left-16 lg:left-24 top-1/4 -translate-y-1/2 pointer-events-none -z-10 lg:z-[40]"
         >
           <Image
             src="/images/maquetai2.webp"
@@ -143,13 +143,13 @@ export default function Home() {
             width={420}
             height={420}
             priority
-            className="drop-shadow-[0_25px_35px_rgba(255,255,255,0.35)] select-none transition-opacity duration-500"
+            className="min-w-[420px] drop-shadow-[0_25px_35px_rgba(255,255,255,0.35)] select-none transition-opacity duration-500"
           />
           <motion.div 
             style={{ opacity: labelOpacity }}
-            className="relative -translate-y-[186%] rotate-[18deg] -translate-x-[-99%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/50 before:via-transparent before:to-black/50 before:pointer-events-none"
+            className="relative -translate-y-[186%] rotate-[18deg] -translate-x-[-98%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/80 before:via-transparent before:to-black/80 before:pointer-events-none"
           >
-            <img src={beers[currentBeerIndex].image} className="rounded-lg w-full h-[100%]" />
+            <img src={beers[currentBeerIndex].image} className="rounded-sm w-full h-[100%]" />
           </motion.div>
         </motion.div>
 
@@ -184,7 +184,7 @@ export default function Home() {
                             <span
                               key={idx}
                               style={{
-                                color: idx === 1 ? brand.green : "#ffffff",
+                               /*  color: idx === 1 ? brand.green : "#ffffff", */
                               }}
                             >
                               {w}{" "}

@@ -131,7 +131,7 @@ export default function Home() {
                 {/* Card de información */}
                 <div className="order-2">
                   <Card className="bg-[#ffffff]/20 border-0 shadow-xl drop-shadow-[0_25px_35px_rgba(255,255,255,0.45)]">
-                    <CardContent className="p-8">
+                    <CardContent className="p-4 lg:p-8">
                       <div className="flex flex-row items-center gap-4">
                         <h2 className="text-3xl md:text-5xl mb-2 font-trash-hand">
                           {beer.name.split(" ").map((w, idx) => (
@@ -152,7 +152,7 @@ export default function Home() {
                           ({beer.style})
                         </p> */}
                       </div>
-                      <p className="text-white/85 mb-6 text-lg tracking-wide bg-black/50 p-4 rounded-lg">
+                      <p className="text-white/85 text-xl lg:text-2xl tracking-wide bg-black/50 p-4 rounded-lg">
                         {beer.description}
                       </p>
 
@@ -194,9 +194,9 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="absolute right-6 bottom-8 text-6xl font-black text-white/10 select-none">
+            {/*   <div className="absolute right-6 bottom-8 text-6xl font-black text-white/10 select-none">
                 {String(i + 1).padStart(2, "0")}
-              </div>
+              </div> */}
             </motion.section>
 
           ))}

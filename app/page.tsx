@@ -8,6 +8,7 @@ import Link from "next/link"
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image"
 import { useRef, useState } from "react"
+import { brand, beers } from "@/lib/data"
 
 export default function Home() {
   const sectionRef = useRef(null);
@@ -21,56 +22,9 @@ export default function Home() {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 25]); // gira 25° durante el scroll
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]); // movimiento sutil vertical
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]); // leve aumento visual
-  const labelOpacity = useTransform(scrollYProgress, [0, 0, 0.9, 1], [0, 1, 1, 0]); // etiqueta aparece tras la botella
+
   // Detectar si la sección de cervezas está visible
   const inView = useInView(sectionRef, { amount: 0.3 });
-
-
-
-
-
-  const brand = {
-    lime: "#aace52",
-    green: "#76a029",
-    dark: "#37560a",
-    black: "#000000",
-  }
-
-  const beers = [
-    {
-      id: "ipa",
-      name: "Session IPA",
-      style: "IPA",
-      description:
-        "Aromática y lupulada, con notas cítricas y frutales. Amargor firme y final seco que invita a otro sorbo.",
-      abv: "6.0%",
-      ibu: "55",
-      gradient: `from-[${brand.dark}] to-[${brand.black}]`,
-      image: "/etiquetas/session_ipa.png",
-    },
-    {
-      id: "golden",
-      name: "Golden",
-      style: "Golden Ale",
-      description:
-        "Tostada y sedosa. Chocolate negro, café y un toque de caramelo. Cuerpo medio y final largo.",
-      abv: "5.6%",
-      ibu: "35",
-      gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/etiquetas/golden.png",
-    },
-    {
-      id: "scottish",
-      name: "Scottish",
-      style: "Scottish Ale",
-      description:
-        "Refrescante y equilibrada. Malta suave, amargor moderado y una carbonatación crujiente para todos los momentos.",
-      abv: "4.8%",
-      ibu: "18",
-      gradient: `from-[${brand.green}] to-[${brand.black}]`,
-      image: "/etiquetas/scottish.png",
-    },
-  ]
 
   const [currentBeerIndex, setCurrentBeerIndex] = useState(0)
 
@@ -145,8 +99,8 @@ export default function Home() {
             priority
             className="min-w-[420px] drop-shadow-[0_25px_35px_rgba(255,255,255,0.35)] select-none transition-opacity duration-500"
           />
-          <motion.div 
-            style={{ opacity: labelOpacity }}
+          <motion.div
+
             className="relative -translate-y-[186%] rotate-[18deg] -translate-x-[-98%] w-[130px] h-[180px] transition-opacity duration-500 overflow-hidden rounded-lg before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-black/80 before:via-transparent before:to-black/80 before:pointer-events-none"
           >
             <img src={beers[currentBeerIndex].image} className="rounded-sm w-full h-[100%]" />
@@ -156,12 +110,12 @@ export default function Home() {
         {/* Contenido de cada cerveza */}
         <div className="space-y-[100vh] relative z-10">
           {beers.map((beer, i) => (
-             <motion.section
-               key={beer.id}
-               className="snap-start min-h-screen flex items-center relative overflow-hidden"
-               viewport={{ amount: 0.6 }}
-               onViewportEnter={() => setCurrentBeerIndex(i)}
-             >
+            <motion.section
+              key={beer.id}
+              className="snap-start min-h-screen flex items-center relative overflow-hidden"
+              viewport={{ amount: 0.6 }}
+              onViewportEnter={() => setCurrentBeerIndex(i)}
+            >
               <div className={`absolute inset-0 -z-10 bg-gradient-to-br opacity-25 ${beer.gradient}`} />
 
               <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
@@ -184,19 +138,19 @@ export default function Home() {
                             <span
                               key={idx}
                               style={{
-                               /*  color: idx === 1 ? brand.green : "#ffffff", */
+                                /*  color: idx === 1 ? brand.green : "#ffffff", */
                               }}
                             >
                               {w}{" "}
                             </span>
                           ))}
                         </h2>
-                        <p
+                        {/* <p
                           className="text-emerald-100/90 mb-4 text-2xl"
                           style={{ color: brand.green }}
                         >
                           ({beer.style})
-                        </p>
+                        </p> */}
                       </div>
                       <p className="lg:text-white/85 mb-6 text-2xl tracking-wide bg-black/50 p-4 rounded-lg">
                         {beer.description}
@@ -243,8 +197,8 @@ export default function Home() {
               <div className="absolute right-6 bottom-8 text-6xl font-black text-white/10 select-none">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              </motion.section>
-           
+            </motion.section>
+
           ))}
         </div>
       </div>

@@ -152,11 +152,11 @@ export default function Home() {
                           ({beer.style})
                         </p> */}
                       </div>
-                      <p className="lg:text-white/85 mb-6 text-2xl tracking-wide bg-black/50 p-4 rounded-lg">
+                      <p className="text-white/85 mb-6 text-lg tracking-wide bg-black/50 p-4 rounded-lg">
                         {beer.description}
                       </p>
 
-                      <div className="grid grid-cols-3 gap-6 mb-6 text-2xl" >
+                   {/*    <div className="grid grid-cols-3 gap-6 mb-6 text-2xl" >
                         <Card className="bg-[#ffffff]/50 border-0 shadow-md drop-shadow-[0_25px_35px_rgba(255,255,255,0.45)] p-2" style={{ color: brand.dark }}>
                           <p className="uppercase">ABV</p>
                           <p className="text-2xl font-semibold tracking-wider">
@@ -175,9 +175,9 @@ export default function Home() {
                             330 ml
                           </p>
                         </Card>
-                      </div>
+                      </div> */}
 
-                      <div className="flex justify-end gap-3">
+                     {/*  <div className="flex justify-end gap-3">
                         <Button
                           variant="outline"
                           className="hover:text-black text-2xl"
@@ -188,7 +188,7 @@ export default function Home() {
                         >
                           Historia
                         </Button>
-                      </div>
+                      </div> */}
                     </CardContent>
                   </Card>
                 </div>
@@ -208,12 +208,12 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-br opacity-25" style={{
           backgroundImage: `linear-gradient(135deg, ${brand.black}, ${brand.dark})`,
         }} />
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
           <div>
-            <h3 className="text-4xl  md:text-5xl font-extrabold mb-4 tracking-wider">
+            <h3 className="text-3xl  md:text-5xl font-extrabold mb-4 tracking-wider">
               Nuestra historia
             </h3>
-            <p className="text-white/85 leading-relaxed text-2xl">
+            <p className="text-white/85 text-2xl">
               Empezamos como un pequeño grupo de amigos cocinando en garaje, soñando con una cerveza que
               represente lo que nos gusta compartir: tiempo, conversación y sabores auténticos. Con el tiempo,
               el proyecto creció, pero mantenemos la misma filosofía: procesos cuidados, materias primas nobles
@@ -222,7 +222,7 @@ export default function Home() {
           </div>
           <div className="justify-self-center">
             <Card className="bg-[#0b0b0b]/70 border-0 shadow-xl">
-              <CardContent className="p-8">
+              <CardContent className="p-4 lg:p-8">
                 <p className="text-white/80 text-2xl tracking-wide font-trash-hand italic">
                   "Hacemos cerveza para la mesa, para celebrar y para acompañar momentos simples."
                 </p>
@@ -257,12 +257,12 @@ export default function Home() {
             allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-lg shadow-xl drop-shadow-[0_2px_5px_rgba(255,255,255,0.45)]"
+            className="rounded-lg shadow-xl drop-shadow-[0_2px_5px_rgba(255,255,255,0.45)] h-[350px] lg:h-[450px]"
           />
 
           <div className="justify-self-center w-full ">
             <Card className="bg-[#ffffff]/40 border-0 shadow-xl drop-shadow-[0_2px_5px_rgba(255,255,255,0.45)] text-2xl">
-              <CardContent className="p-8 text-white/80 flex flex-col gap-2 lg:gap-4">
+              <CardContent className="p-4 lg:p-8 text-white/80 flex flex-col gap-2 lg:gap-4">
                 <Link href="tel:+5492914262404">
                   <Smartphone className="inline-block w-6 h-6 mr-2" />
                   <span className="text-white/60">Tel:</span>
